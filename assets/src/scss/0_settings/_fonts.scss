@@ -1,0 +1,18 @@
+/* lato-regular - latin */
+@font-face {
+    font-family: 'Diatype';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../library/fonts/ABCDiatype-Medium.woff2') format('woff2'); /* Super Modern Browsers */
+    src: local(''),
+         url('../library/fonts/ABCDiatype-Medium.woff') format('woff'); /* Modern Browsers */
+}
+
+@font-face {
+    font-family: 'Diatype';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../library/fonts/ABCDiatype-MediumItalic.woff2') format('woff2'); /* Super Modern Browsers */
+    src: local(''),
+         url('../library/fonts/ABCDiatype-MediumItalic.woff') format('woff'); /* Modern Browsers */
+}

@@ -1,0 +1,919 @@
+.dev-mode {
+    .cya-landing__video video {
+        transform: rotate(180deg) scaleX(-1); 
+    }
+}
+
+.debug-counter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 200px;
+    mix-blend-mode: difference;
+    color: white;
+}
+
+/**
+*========================================
+*	
+*	Landing
+*	
+*========================================
+*/
+
+
+.cya-landing {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s;
+    z-index: $z-index-landing;
+    background-color: white;
+
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .cya-landing__video {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+
+        video, img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity .3s;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            &.visible {
+                opacity: 1;
+            }
+        }
+
+        img {
+            opacity: 1;
+        }
+    }
+
+    .cya-landing__enter, .cya-landing__about {
+        position: fixed;
+        left: 50%; 
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: $z-index-cookies;
+    }
+
+    .cya-landing__about {
+        color: color( 'gray', 'regular' );
+        width: 100%;
+
+        > * {
+            display: inline;
+        }
+    }
+
+    .cya-landing__enter {
+        color: color( 'yellow', 'regular' );
+        @include body-text( 'enter' );
+        cursor: pointer;
+        animation-name: blinking-enter;
+        // animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-duration: 4s;
+        // animation-direction: ;
+        transition: $transition;
+
+        &-enter {
+            opacity: 0;
+            animation-delay: 2s;
+        }
+    }
+}
+
+/**
+*========================================
+*	
+*	Cookie Notice
+*	
+*========================================
+*/
+
+.sm-cookie-container {
+
+    // position: fixed;
+    // left: 50%; 
+    // top: 50%;
+    // transform: translate(-50%, -50%);
+    // z-index: $z-index-cookies;
+    // opacity: 0;
+    // pointer-events: none;
+    // transition: opacity $transition;
+
+    // &.active {
+    //     opacity: 1;
+    //     pointer-events: all;
+    // }
+}
+
+.sm-cookie-notice {
+    // display: flex;
+    // @include body-text( 'button' );
+
+    // .sm-cookie-notice__content {
+    //     background: yellow;
+    // }
+}
+
+.sm-cookie-text {
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: $z-index-cookies;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition;
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+    @include body-text( 'large text' );
+    color: color( 'yellow', 'regular' );
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    align-items: flex-start;
+    padding-top: map_get( $spacing, "regular-plus" );
+    padding-right: map_get( $spacing, "regular" );
+
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+/**
+*========================================
+*	
+*	About Slider
+*	
+*========================================
+*/
+
+.cya-about-marquee {
+
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: $z-index-about-marquee;
+    top: 0;
+
+    .sm-marquee {
+
+        position: absolute;
+        left: 0;
+        width: 100%;
+        white-space: nowrap;
+        color: color( 'gray', 'regular' );
+
+        &.cya-about-top {
+            transition: top 1s;
+            top: 0;
+        }
+
+        &.cya-about-bottom {
+            transition: bottom 1s;
+            bottom:  map_get( $spacing, "regular-plus" );;
+        }
+
+        .sm-marquee-item {
+            position: absolute;
+        }
+    }
+}
+
+.home .cya-about-marquee .sm-marquee {
+
+
+    &.landing {
+
+        &.cya-about-top {
+            top: 50%;
+            transform: translateY(-24px);
+        }
+
+        &.cya-about-bottom {
+            bottom: 50%;
+            transform: translateY(-6px);
+        }
+    }
+
+    @include mq($until: 'medium') {
+        
+        &.landing {
+
+            &.cya-about-top {
+                top: 50%;
+                transform: translateY(-22px);
+            }
+
+            &.cya-about-bottom {
+                bottom: 50%;
+                transform: translateY(-4px);
+            }
+        };
+    }
+}
+
+/**
+*========================================
+*	
+*	Marquee
+*	
+*========================================
+*/
+.sm-marquee {
+    .sm-marquee-item {
+        display: inline;
+    }
+}
+
+/**
+*========================================
+*	
+*	Navigation
+*	
+*========================================
+*/
+
+.cya-navigation {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    z-index: $z-index-navigation;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    align-items: flex-start;
+    padding-top: map_get( $spacing, "regular-plus" );  
+    pointer-events: none !important;    
+
+    &.invisible  {
+        .cya-menu, .cya-sizes {
+            opacity: 0;
+            pointer-events: none !important;
+            
+            .cya-button {
+                pointer-events: none !important;
+            }
+        }
+    }
+
+    .cya-menu, .cya-sizes {
+
+        position: relative;
+        transition: $transition;
+
+        .cya-navigation-control {
+            pointer-events: all;
+            z-index: 1;
+            opacity: 1;
+            transition: $transition-long;
+
+        }
+
+        .cya-navigation-sizes__list, .cya-navigation-menu__list {
+
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: $transition-long;
+            width: calc(100vw - 240px);
+            flex-wrap: wrap;
+
+            .cya-navigation-item {
+                transition: $transition-long;
+                cursor: pointer;
+                margin: 0;
+                padding: 0;
+                margin-bottom: map_get( $spacing, "regular" );
+
+                &--current .cya-button {
+                    color: color( 'black', 'regular' );
+                }
+                .cya-button {
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+
+        &.active {
+            z-index: $z-index-menu-active;
+
+            .cya-navigation-control {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .cya-navigation-sizes__list, .cya-navigation-menu__list {
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+    }
+
+    .cya-menu {
+
+        .cya-navigation-menu__list {
+
+            left: 0;
+
+            .cya-navigation-item {
+            }
+
+        }
+        
+    }
+
+    .cya-sizes {
+        transition: $transition;
+
+        .cya-navigation-sizes__list {
+            right: 0;
+            justify-content: flex-end;
+
+            .cya-navigation-item {
+            }
+        }
+
+        &.invisible {
+            opacity: 0;
+        }
+    }
+
+    .sm-cookie-notice {
+        @include body-text( 'button' );
+        color: yellow;
+        text-align: center;
+        opacity: 0;
+        flex: 1;
+        pointer-events: none;
+        transition: opacity $transition;
+
+        display: none;
+    
+        &.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .sm-cookie-notice__control {
+
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+
+            .sm-cookie-notice__control__accept, .sm-cookie-notice__control__learn-more {
+                color: color( 'red', 'regular' );
+            }
+        }
+    }
+
+    @media screen and (max-width: 1260px) {
+
+        .cya-menu, .cya-sizes {
+
+            .cya-navigation-menu__list, .cya-navigation-sizes__list {
+                width: 200px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+
+        .cya-sizes {
+            display: none;
+        }
+
+        .cya-menu {
+
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            pointer-events: none;
+            
+            .cya-navigation-menu__list {
+                // position: relative;
+                left: 50%;
+                top: 0;
+                transform: translateX(-50%);
+                flex-wrap: wrap;
+                justify-content: center;
+                pointer-events: none;
+
+                .cya-navigation-item {
+                    margin-top: 6px;
+                    margin-bottom: unset;
+                }
+            }
+
+            .cya-navigation-menu__list, .cya-navigation-sizes__list {
+                width: 200px;
+            }
+
+            &.active {
+                pointer-events: none;
+
+                .cya-navigation-control {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+            
+                .cya-navigation-menu__list {
+                    pointer-events: none;
+                    z-index: 1;
+                    top: -6px;
+                    .cya-navigation-item {
+                        pointer-events: all;
+                    }
+                }
+            }
+
+            &:not(.active) {
+                .cya-menu__item__link {
+                    pointer-events: none !important;
+                }
+            }
+        }
+    }
+}
+
+/**
+*========================================
+*	
+*	Footer
+*	
+*========================================
+*/
+
+.cya-footer {
+
+    position: relative;
+
+    .cya-footer-container {
+
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        bottom: 0;
+        // align-items: flex-end;
+        // align-content: flex-end;
+        padding-bottom:  map_get( $spacing, "regular-plus" );
+        z-index: 1;
+
+        .cya-footer-info {
+            @include body-text( 'regular text' );
+            color: color( 'gray', 'regular' );
+            text-align: center;
+        }
+    }
+
+    @include mq($until: 'medium') {
+        .cya-footer-container {
+            flex-wrap: wrap;
+            // justify-content: center;
+            justify-content: space-between;
+
+            .cya-button {
+                max-width: 50%;
+                margin-top: map_get( $spacing, "small" );
+            }
+        }
+    }
+
+    // @include mq($until: 'small') {
+    //     .cya-footer-container {
+
+    //         .cya-button {
+    //             font-size: 8vw;
+    //             margin-left: 3.5vw;
+    //             margin-right: 3.5vw;
+    //             padding-left: 2vw;
+    //             padding-right: 2vw;
+    //             min-width: unset;
+    //             width: calc(50% - 7vw);
+    //         }
+    //     }
+    // }
+}
+
+/**
+*========================================
+*	
+*	Imprint
+*	
+*========================================
+*/
+
+
+.cya-imprint-container {
+
+    // max-height: 0;
+    overflow: hidden;
+    transition: $transition-extra-long;
+    height: 100vh;
+    width: 100%;
+    top: 100vh;
+    position: fixed;
+    // text-align: center;
+	color: color( 'gray', 'light' );
+    // padding-top: 64px;
+    padding-top: 23px;
+    background: color( 'red', 'regular' );
+    overflow-y: scroll;
+    padding-left: map_get( $spacing, "regular" );
+    padding-right: map_get( $spacing, "regular" );
+    z-index: $z-index-imprint;
+
+    * {
+        @include body-text( 'regular text' );
+    }
+
+    a {
+        color: color( 'gray', 'light' );
+
+        &:hover {
+            color: color( 'yellow', 'regular' );
+        }
+    }
+
+    &.active {
+        // max-height: 100vh;
+        top: 0;
+
+        .cya-imprint-button-top {
+            top: 23px;
+        }
+
+        .cya-imprint-button-bottom {
+            bottom: map_get( $spacing, "regular-plus" );
+        }
+    }
+
+    .cya-imprint {
+        min-height: 100%;
+        width: 100%;
+        padding-top: 0px;
+
+        h2 {
+        	@include body-text( 'regular text' );
+            font-weight: 400;
+            // margin-top: 44px;
+
+            &:first-of-type {
+                margin-top: 0;
+            }
+        }
+
+        h2:not(:first-child) {
+            margin-top: 44px;
+        }
+
+        .cya-imprint__content {
+            > * {
+                margin-bottom: 44px;
+            }
+        }
+    }
+
+    .cya-imprint-button {
+        color: color( 'red', 'regular' );
+        @include body-text( 'button' );
+    }
+
+    .cya-imprint-button-top {
+        position: fixed; 
+        top: calc( 100vh + 20px );
+
+        &-close {
+            left: map_get( $spacing, "regular" );
+        }
+
+        &-scroll {
+            right: map_get( $spacing, "regular" );
+            opacity: 0;
+            transition: opacity $transition;
+
+            &.visible {
+                opacity: 1;
+            }
+
+            // .cya-imprint-button__text {
+
+            //     &::after {
+            //         content: "↑";
+            //         position: absolute;
+            //         right: #{$offset};
+            //         margin-top: 1px;
+            //     }
+            // }
+        }
+    }
+
+    .cya-imprint-button-bottom {
+        position: fixed; 
+        bottom: calc( 0px - 100vh - #{map_get( $spacing, "regular-plus" )}  );
+        left: 50%;
+        transform: translateX(-50%);
+        transition: $transition-long;
+        margin-bottom: 0;
+    }
+
+    .cya-imprint__credits {
+
+        // display: flex;
+        // justify-content: space-between;
+        // flex-wrap: wrap;
+
+        .cya-imprint__credits__item {
+            // width: calc( 33% - #{map_get( $spacing, "regular" )} );
+            display: inline-block; 
+            margin-right: map_get( $spacing, "large" );
+        }
+    }
+
+    @include mq($until: 'medium') {
+
+        padding-left: 0;
+        padding-right: 0;
+
+        .cya-imprint {
+            padding-bottom: 160px !important;
+            
+            h2 {
+                margin-top: 0;
+            }
+
+            h2:not(:first-child) {
+                margin-top: 20px;
+            }
+
+            .cya-imprint__content {
+                > * {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+
+        .cya-imprint__credits {
+            .cya-imprint__credits__item {
+                width: 100%;
+            }
+        }
+
+        .cya-imprint-button-top, .cya-imprint-button-bottom {
+            left: calc(50% - 3.5vw);
+            transform: translateX(-50%);
+        }
+
+        .cya-imprint-button-top-scroll {
+            display: none;
+        }
+    }
+}
+
+/**
+*========================================
+*	
+*	About
+*	
+*========================================
+*/
+
+.cya-about {
+    background: color( 'gray', 'regular' );
+    min-height: 100vh;
+    color: red;
+    padding-top: 23px;
+
+    * {
+        @include body-text( 'regular text' );
+    }
+
+    a {
+        color: color( 'red', 'regular' );
+
+        &:hover {
+            color: color( 'yellow', 'regular' );
+        }
+    }
+
+    .cya-about__sentences, .cya-about__text {
+        margin-bottom: 44px;
+    }
+
+    .cya-about__meta {
+        display: flex;
+
+        > div {
+            width: calc( 50% - #{map_get( $spacing, "regular" )} );
+
+            &:nth-of-type(1), &:nth-of-type(2) {
+                margin-right: map_get( $spacing, "regular" );
+            }
+        }
+    }
+
+    @include mq($until: 'medium') {
+        .cya-about__meta {
+            flex-wrap: wrap;
+
+            > div {
+                width: 100%;
+            }
+        }
+
+
+        .cya-about__sentences, .cya-about__text {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.page-template-about {
+
+    .cya-sizes {
+        opacity: 0;
+    }
+
+    .cya-footer .cya-footer-container .cya-footer-info {
+        color: white;
+    }
+
+    .cya-about-marquee .sm-marquee {
+        color: black;
+    }
+
+    .cya-footer, .cya-navigation {
+        .cya-button {
+            color: color( 'gray', 'regular' );
+            background: white;
+
+            &::before {
+                left: 1px;
+                transform: translate(-100%, -50%);
+                @include bg('spike-left-white.svg');
+                background-position: right;
+            }
+
+            &::after {
+                right: 1px;
+                transform: translate(100%, -50%);
+                @include bg('spike-right-white.svg');
+                background-position: left;
+            }
+
+            &:hover {
+                color: color( 'black', 'regular' );
+            }
+        }
+    }
+}
+
+/**
+*========================================
+*	
+*	index
+*	
+*========================================
+*/
+
+.cya-index {
+    background: color( 'yellow', 'regular' );
+    min-height: 100vh;
+    color: red;
+    padding-top: 23px;
+
+    a {
+        color: red;
+    }
+
+    .cya-index-projects {
+        .cya-index-projects__project {
+            @include body-text( 'large text' );
+            transition: $transition;
+            // position: relative;
+
+            &:hover {
+                color: color( 'gray', 'regular' );
+                .index-project-meta .cya-index-project-meta-container {
+                    opacity: 1;
+
+                    .index-project-meta-info {
+                        // max-height: 400px !important;
+                        position: absolute;
+                        top: 0;
+                    }
+                }
+
+                .cya-index-projects__project__link {
+                    color: color( 'gray', 'regular' );
+                }
+            }
+
+            .cya-index-projects__project__link {
+                text-decoration: none;
+            }
+
+            .index-project-meta {
+                    position: relative;
+
+                    .cya-index-project-meta-container {
+                        opacity: 0;
+                        transition: $transition;
+                        // position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        padding-right: map_get( $spacing, "regular" );
+                        padding-left: map_get( $spacing, "regular" );
+
+                        .index-project-meta-info {
+                            color: color( 'gray', 'regular' );
+                            max-height: 0;
+                            transition: $transition;
+                        }
+        
+                        .index-project-meta-image {
+                            position: absolute;
+                            // bottom: -8px;
+                            // transform: translateY(100%);
+                            padding-right: map_get( $spacing, "regular" );
+                            // padding-left: map_get( $spacing, "regular" );
+        
+                            img {
+                                width: 100%;
+                                height: auto;
+                            }
+                        }
+                    }
+            }
+
+        }
+    }
+
+    @include mq($from: 'large') {
+        // padding-top: 23px !important;
+        padding-bottom: 256px !important;
+    }
+
+    @include mq($until: 'medium') {
+
+        .cya-index-projects {
+            .cya-index-projects__project {
+                .cya-column {
+                    padding-bottom: map_get( $spacing, "large" );
+                    padding-bottom: 16px;
+                }
+            }
+        }
+    }
+}
+
+.page-template-index {
+
+    .cya-sizes {
+        opacity: 0;
+    }
+
+    .cya-footer .cya-footer-container .cya-footer-info {
+        color: black;
+    }
+
+    .cya-about-marquee .sm-marquee {
+        color: black;
+    }
+
+
+}

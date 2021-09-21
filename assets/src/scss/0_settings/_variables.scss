@@ -1,0 +1,87 @@
+$content-width: 1440px !default;
+$content-width--narrow: 768px !default;
+
+$mq-breakpoints: (
+	small: 600px,
+	medium: 768px,
+	large: 1024px,
+	xlarge: $content-width
+);
+
+$spacing: (
+	"extra-small": 4px,
+	"small": 8px,
+	"regular": 16px,
+	"regular-plus": 20px,
+	"large": 32px,
+	"extra-large": 64px,
+	"extra-extra-large": 128px
+);
+
+$sizes: (
+	"extra-small": 4px,
+	"small": 8px,
+	"regular": 16px,
+	"regular-plus": 20px,
+	"large": 32px,
+	"extra-large": 64px,
+	"extra-extra-large": 128px,
+	"content-narrow": $content-width--narrow,
+	"content-wide": $content-width
+);
+
+$sm-grid: (
+    "content_width": $content_width,
+    "column_count": 12,
+    "column_gutter": 8px,
+    "column_side": 8px,
+    "row_height": 16px,
+    "huge": (
+        "breakpoint": 1800px,
+        "column_count": 12,
+        "column_gutter": 8px,
+        "column_side": 8px,
+        "row_height": 16px,
+    ),
+    "xlarge": (
+        "breakpoint": 1400px,
+        "column_count": 12,
+        "column_gutter": 8px,
+        "column_side": 8px,
+        "row_height": 16px,
+    ),
+    "large": (
+        "breakpoint": 1024px,
+        "column_count": 12,
+        "column_gutter": 8px,
+        "column_side": 8px,
+        "row_height": 16px,
+    ),
+    "medium": (
+        "breakpoint": 768px,
+        "column_count": 6,
+        "column_gutter": 8px,
+        "column_side": 8px,
+        "row_height": 16px,
+    ),
+    "small": (
+        "breakpoint": 420px,
+        "column_count": 6,
+        "column_gutter": 8px,
+        "column_side": 8px,
+        "row_height": 16px,
+    ),
+    "xsmall": (
+        "breakpoint": 320px,
+        "column_count": 6,
+        "column_gutter": 8px,
+        "column_side": 8px,
+        "row_height": 16px,
+    )
+);
+
+$transition: .1s;
+$transition-long: .3s;
+$transition-extra-long: .6s;
+$border-radius: 8px;
+$box-shadow: 5px 0px 15px #00000012;

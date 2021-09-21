@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../Plugins/Salemoche-Wordpress-Essentials"
+		}
+	],
+	"settings": {
+		"workbench.colorTheme": "Slack Theme Aubergine Dark",
+		"liveServer.settings.multiRootWorkspaceName": "Salemoche-Wordpress-Essentials"
+	}
+}

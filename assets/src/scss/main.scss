@@ -1,0 +1,31 @@
+/**
+ * ========================================
+ * 
+ * Main styles
+ * 
+ * ========================================
+ */
+
+// Settings
+
+@import './0_settings/settings';
+
+// Salemoche Assets
+
+@import '../../../../../plugins/salemoche-wordpress-essentials/assets/src/scss/main.scss';
+
+// Tools
+
+@import './1_tools/tools';
+
+// utilities
+
+@import './2_utilities/utilities';
+
+// Generic
+
+@import './3_generic/generic';
+
+// Layouts
+
+@import './4_layouts/layouts';

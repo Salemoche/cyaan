@@ -1,0 +1,146 @@
+/** =============================================
+*
+*   Typography styles
+*
+============================================= */
+
+// Global theme font.
+$font__main: "Diatype", sans-serif;
+
+// Global code font
+$font__code: "Diatype", sans-serif, monospace;
+
+// Fallback font when font is not loaded via WebFonts JS.
+$font__fallback: sans-serif;
+
+$mobile_modifier: 0.42;
+
+* {
+    font-family: $font__main;
+}
+
+$body-text: (
+    'h1': (
+        'small': (
+            font-size: 48px,
+            line-height: 1.5
+        ),
+        'medium': (
+            font-size: 48px,
+            line-height: 1.5
+        )
+    ),
+    'h2': (
+        'small': (
+            font-size: 48px,
+            line-height: 1.5
+        ),
+        'medium': (
+            font-size: 48px,
+            line-height: 1.5
+        )
+    ),
+    'h3': (
+        'small': (
+            font-size: 48px,
+            line-height: 1.5
+        ),
+        'medium': (
+            font-size: 48px,
+            line-height: 1.5
+        )
+    ),
+    'h4': (
+        'small': (
+            font-size: 48px,
+            line-height: 1.5
+        ),
+        'medium': (
+            font-size: 48px,
+            line-height: 1.5
+        )
+    ),
+    'h5': (
+        'small': (
+            font-size: 48px,
+            line-height: 1.5
+        ),
+        'medium': (
+            font-size: 48px,
+            line-height: 1.5
+        )
+    ),
+    'h6': (
+        'small': (
+            font-size: 48px,
+            line-height: 1.5
+        ),
+        'medium': (
+            font-size: 48px,
+            line-height: 1.5
+        )
+    ),
+    'p': (
+        'small': (
+            font-size: calc(44px * #{$mobile_modifier}),
+            line-height: 1.1
+        ),
+        'medium': (
+            font-size: 44px,
+            line-height: 1.1
+        )
+    ),
+    'body': (
+        'small': (
+            font-size: 16px,
+            line-height: 1.1875
+        ),
+        'medium': (
+            font-size: 16px,
+            line-height: 1.1875
+        )
+    ),
+    'enter': (
+        'small': (
+            font-size: 48px,
+            line-height: 1
+        ),
+        'medium': (
+            font-size: 128px,
+            line-height: 1
+        )
+    ),
+    'button': (
+        'small': (
+            font-size: calc(73px * #{$mobile_modifier}),
+            line-height: 1
+        ),
+        'medium': (
+            font-size: 44px,
+            line-height: 1
+        )
+    ),
+    'regular text': (
+        'small': (
+            font-size: calc(44px * #{$mobile_modifier}),
+            line-height: 1.1
+        ),
+        'medium': (
+            font-size: 44px,
+            line-height: 1.1
+        )
+    ),
+    'large text': (
+        'small': (
+            font-size: calc(44px * #{$mobile_modifier}),
+            // line-height: 1.1
+            line-height: 1.2
+        ),
+        'medium': (
+            font-size: 44px,
+            // line-height: 1.1
+            line-height: 1.2
+        )
+    ),
+
+)

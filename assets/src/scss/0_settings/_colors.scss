@@ -1,0 +1,35 @@
+:root {
+    --black: #000;
+    --yellow: #F5FF00;
+    --red: #FF0000;
+
+    --color-current-light: #fff;
+    --color-current-regular: #999;
+    --color-current-dark: #000;
+
+    --color-gray-light: #DBDBDB;
+    --color-gray-regular: #BAB9B9;
+    --color-gray-dark: #3B3B3B;
+}
+
+$colors: (
+    'current': (
+        'light': var(--color-current-light),
+        'regular': var(--color-current-regular),
+        'dark': var(--color-current-dark),
+    ),
+    'black': (
+        'regular': var(--black)
+    ),
+    'yellow': (
+        'regular': var(--yellow)
+    ),
+    'red': (
+        'regular': var(--red)
+    ),
+    'gray': (
+        'light': var(--color-gray-light),
+        'regular': var(--color-gray-regular),
+        'dark': var(--color-gray-dark),
+    ),
+);

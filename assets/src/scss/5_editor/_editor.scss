@@ -1,0 +1,33 @@
+/**
+ * ========================================
+ * 
+ * Editor Styles Partial
+ * 
+ * ========================================
+ */
+
+// Salemoche Assets
+
+@import '../../../../../../plugins/salemoche-wordpress-essentials/assets/src/scss/main.scss';
+
+// Editors
+
+@import '../../../../../../plugins/salemoche-wordpress-essentials/assets/src/scss/5_editor/_gutenberg.scss';
+
+// Essentials
+
+@import '../essentials';
+
+// Generic
+
+@import '../3_generic/generic';
+
+
+
+.wp-block {
+	border: 1px solid lighten($color: blue, $amount: 70)
+}
+
+.wp-block-group {
+	border: 1px solid lighten($color: pink, $amount: 40)
+}
