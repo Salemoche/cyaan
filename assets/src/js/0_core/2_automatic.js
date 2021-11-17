@@ -77,6 +77,7 @@ if (window.innerWidth <= 1280 && window.innerWidth >= 414 && window.salemoche.de
             window.salemoche.imageMode = size;
             const { imageMode } = window.salemoche
             let images = $('.cya-gallery-image');
+            $('.cya-sizes').find('.cya-navigation-control-sizes').html(size);
 
             if (!isFrontPage) return;
 

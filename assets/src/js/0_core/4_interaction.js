@@ -341,11 +341,13 @@ import { smSetCookie, smGetCookie } from '../../../../../../plugins/salemoche-wo
 
                 $(this).on('mouseenter', function() {
                     $(this).find('.index-project-meta-info').css('opacity', 1);
+                    
                     // console.log(itemHeight)
                 })
                 
                 $(this).on('mouseleave', function() {
                     $(this).find('.index-project-meta-info').css('opacity', 0);
+                    
                     // console.log(0)
                 })
 

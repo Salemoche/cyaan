@@ -38,22 +38,22 @@
             $("body").animate({ scrollTop: position - displacer }); 
         }
 
-        function toggleElement(selector, method, distance) {
+        // function toggleElement(selector, method, distance) {
 
-            if (method == 'top') {
-                if (scrollDist > distance) {
-                    $(selector).addClass('visible');
-                } else {
-                    $(selector).removeClass('visible');
-                }
-            } else if (method == 'bottom') {
-                if (fromBottom() < distance) {
-                    $(selector).addClass('visible');
-                } else {
-                    $(selector).removeClass('visible');
-                }
-            }
-        }
+        //     if (method == 'top') {
+        //         if (scrollDist > distance) {
+        //             $(selector).addClass('visible');
+        //         } else {
+        //             $(selector).removeClass('visible');
+        //         }
+        //     } else if (method == 'bottom') {
+        //         if (fromBottom() < distance) {
+        //             $(selector).addClass('visible');
+        //         } else {
+        //             $(selector).removeClass('visible');
+        //         }
+        //     }
+        // }
         
         function elementScrolledInView (element = $(''), offset = 0, callback = () => {}) {
 
@@ -136,7 +136,9 @@
         function checkCurrentImage() {
 
             let pImagesOverView;
-            let pimagesOverTrigger;
+            let pImagesOverTrigger;
+            let imagesOverView;
+            let imagesOverTrigger;
 
             if(window.salemoche.imageMode == 'large') {
                 if (!window.salemoche.lowHardwareMode) {
@@ -144,7 +146,8 @@
                     let imagesInView = checkElementsInView($('.cya-image'), 'window', window.innerHeight / 2 - nextElementHeight / 2 - 3);
                     let imagesOverTrigger = imagesInView.filter(image => image.overTrigger == true);
                     if (imagesOverTrigger.length == 0) return
-    
+
+                    
                     let mainImage = $(`#${imagesOverTrigger[imagesOverTrigger.length - 1].id}`);
     
                     // get the height of the next infobox

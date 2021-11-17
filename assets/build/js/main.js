@@ -1906,7 +1906,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -2001,6 +2001,7 @@ if (window.innerWidth <= 1280 && window.innerWidth >= 414 && window.salemoche.de
       window.salemoche.imageMode = size;
       var imageMode = window.salemoche.imageMode;
       var images = $('.cya-gallery-image');
+      $('.cya-sizes').find('.cya-navigation-control-sizes').html(size);
       if (!isFrontPage) return;
 
       if (imageMode == 'large' || imageMode == 'small') {
@@ -2669,23 +2670,22 @@ __webpack_require__.r(__webpack_exports__);
       $("body").animate({
         scrollTop: position - displacer
       });
-    }
+    } // function toggleElement(selector, method, distance) {
+    //     if (method == 'top') {
+    //         if (scrollDist > distance) {
+    //             $(selector).addClass('visible');
+    //         } else {
+    //             $(selector).removeClass('visible');
+    //         }
+    //     } else if (method == 'bottom') {
+    //         if (fromBottom() < distance) {
+    //             $(selector).addClass('visible');
+    //         } else {
+    //             $(selector).removeClass('visible');
+    //         }
+    //     }
+    // }
 
-    function toggleElement(selector, method, distance) {
-      if (method == 'top') {
-        if (scrollDist > distance) {
-          $(selector).addClass('visible');
-        } else {
-          $(selector).removeClass('visible');
-        }
-      } else if (method == 'bottom') {
-        if (fromBottom() < distance) {
-          $(selector).addClass('visible');
-        } else {
-          $(selector).removeClass('visible');
-        }
-      }
-    }
 
     function elementScrolledInView() {
       var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : $('');
@@ -2772,25 +2772,29 @@ __webpack_require__.r(__webpack_exports__);
 
     function checkCurrentImage() {
       var pImagesOverView;
-      var pimagesOverTrigger;
+      var pImagesOverTrigger;
+      var imagesOverView;
+      var imagesOverTrigger;
 
       if (window.salemoche.imageMode == 'large') {
         if (!window.salemoche.lowHardwareMode) {
           // get the last item that's over the trigger (in this case minus half the next element height)
           var imagesInView = checkElementsInView($('.cya-image'), 'window', window.innerHeight / 2 - nextElementHeight / 2 - 3);
-          var imagesOverTrigger = imagesInView.filter(function (image) {
+
+          var _imagesOverTrigger = imagesInView.filter(function (image) {
             return image.overTrigger == true;
           });
-          if (imagesOverTrigger.length == 0) return;
-          var mainImage = $("#".concat(imagesOverTrigger[imagesOverTrigger.length - 1].id)); // get the height of the next infobox
+
+          if (_imagesOverTrigger.length == 0) return;
+          var mainImage = $("#".concat(_imagesOverTrigger[_imagesOverTrigger.length - 1].id)); // get the height of the next infobox
 
           nextElementHeight = mainImage.next('.cya-image').find('.cya-info-box').height() ? mainImage.next('.cya-image').find('.cya-info-box').height() : 52;
-          if (pImagesOverView != imagesOverView && pImagesOverTrigger != imagesOverTrigger) $('.cya-info-box').removeClass('fixed');
+          if (pImagesOverView != imagesOverView && pImagesOverTrigger != _imagesOverTrigger) $('.cya-info-box').removeClass('fixed');
           mainImage.find('.cya-info-box').addClass('fixed');
           window.salemoche.focusElement = mainImage; // console.log(window.salemoche.focusElement.data('total-index'));
 
           pImagesOverView = imagesOverView;
-          pImagesOverTrigger = imagesOverTrigger;
+          pImagesOverTrigger = _imagesOverTrigger;
         } else {
           $('.cya-info-box').removeClass('fixed');
           $('.cya-info-box').addClass('fixed-low');
@@ -2860,7 +2864,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
